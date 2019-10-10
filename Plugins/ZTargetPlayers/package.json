@@ -1,0 +1,13 @@
+{ 
+  "name": "ZTargetPlayers", 
+  "version": "1.0.0", 
+  "description": "Enables the ability to Z-Target other players!", 
+  "main": "ZTargetPlayers.js", 
+  "author": "Drahsid", 
+  "credits": "", 
+  "license": "MIT", 
+  "core": "OcarinaofTime", 
+  "dry": { 
+    "extends": "./ModLoader64/package-dry.json" 
+  } 
+} 

@@ -1,0 +1,13 @@
+{ 
+  "name": "FastLink", 
+  "version": "1.0.0", 
+  "description": "Faster movement speed at the cost of sanity.", 
+  "main": "FastLink.js", 
+  "author": "Drahsid", 
+  "credits": "", 
+  "license": "MIT", 
+  "core": "OcarinaofTime", 
+  "dry": { 
+    "extends": "./ModLoader64/package-dry.json" 
+  } 
+} 

@@ -1,0 +1,13 @@
+{ 
+  "name": "QuakeMovement", 
+  "version": "1.0.0", 
+  "description": "Quake-like movement.", 
+  "main": "QuakeMovement.js", 
+  "author": "Drahsid", 
+  "credits": "", 
+  "license": "MIT", 
+  "core": "OcarinaofTime", 
+  "dry": { 
+    "extends": "./ModLoader64/package-dry.json" 
+  } 
+} 
