@@ -32,7 +32,7 @@ const VZO = VYO + 4;
 const FRICTION = 4;
 const ACCELERATE = 14;
 const STOPSPEED = 10;
-const WISHSPEED = 64;
+const WISHSPEED = 10;
 
 let lastPosition : Vector3 = new Vector3();
 let deltaTime : number = 0.05;
