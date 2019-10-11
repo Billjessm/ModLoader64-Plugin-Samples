@@ -2,7 +2,7 @@ import { EventsClient, EventHandler } from 'modloader64_api/EventHandler';
 import { IModLoaderAPI, IPlugin } from 'modloader64_api/IModLoaderAPI';
 import { InjectCore } from 'modloader64_api/CoreInjection';
 import { IOOTCore } from 'modloader64_api/OOT/OOTAPI';
-import { Interpolator } from './Interpolator';
+import { Interpolator } from '../../../Utility/Interpolator';
 import { Buffer } from 'buffer';
 
 const FPSADDR = 0x801C6FA1;
@@ -39,8 +39,8 @@ export class HPTunic implements IPlugin {
     r.targetPosition = (1 - healthPercent) * 255;
     g.targetPosition = healthPercent * 255;
 
-    let r_ = Math.ceil(r.GetPosition(time, false));
-    let g_ = Math.floor(g.GetPosition(time, false));
+    let r_ = Math.ceil(r.GetPosition(time));
+    let g_ = Math.floor(g.GetPosition(time));
 
     if (r_ > 255) r_ = 255;
     if (r_ < 0) r_ = 0;

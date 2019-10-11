@@ -78,9 +78,9 @@ class Vector3 {
     }
 
     dot(rhs: Vector3) : number {
-        return (this.x * rhs.x)
-            + (this.y * rhs.y)
-            + (this.z * rhs.z);
+        return this.x * rhs.x
+            + this.y * rhs.y
+            + this.z * rhs.z;
     }
 
     cross(rhs: Vector3) : Vector3 {

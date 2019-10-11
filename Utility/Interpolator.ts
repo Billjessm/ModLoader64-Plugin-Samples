@@ -16,7 +16,7 @@ class Interpolator
     this.velocity = 0.0;
   }
 
-  Step(newTime: number, logger: any): void {
+  Step(newTime: number, logger: any = false): void {
     let dt = newTime - this.lastUpdate;
     let f = this.velocity - (this.currentPosition - this.targetPosition) * (this.dampening * this.dampening * dt);
     let e = 1 + this.dampening * dt;
@@ -35,17 +35,17 @@ class Interpolator
     }
   }
 
-  GetPosition(newTime: number, logger: any): number{
+  GetPosition(newTime: number, logger: any = false): number{
     this.Step(newTime, logger);
     return this.currentPosition;
   }
 
-  GetTarget(newTime: number, logger: any): number{
+  GetTarget(newTime: number, logger: any = false): number{
     this.Step(newTime, logger);
     return this.targetPosition;
   }
 
-  GetVelocity(newTime: number, logger: any): number{
+  GetVelocity(newTime: number, logger: any = false): number{
     this.Step(newTime, logger);
     return this.velocity;
   }

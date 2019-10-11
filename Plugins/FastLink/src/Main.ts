@@ -2,7 +2,7 @@ import { EventsClient, EventHandler } from 'modloader64_api/EventHandler';
 import { IModLoaderAPI, IPlugin } from 'modloader64_api/IModLoaderAPI';
 import { InjectCore } from 'modloader64_api/CoreInjection';
 import { IOOTCore, OotEvents } from 'modloader64_api/OOT/OOTAPI';
-import { Vector3 } from './Vector3';
+import { Vector3 } from '../../../Utility/Vector3';
 
 enum SleepState {
   Awake,
