@@ -18,10 +18,6 @@ let currentTarget = 0;
 let currentColor = new Color3();
 let velocity = 15;
 
-let lastTime : number = 0;
-let time : number = 0;
-let lastFramecount = 0;
-
 export class RainbowTunic implements IPlugin {
   ModLoader = {} as IModLoaderAPI;
   name = 'RainbowTunic';
@@ -34,11 +30,6 @@ export class RainbowTunic implements IPlugin {
 
   onTick(): void 
   {
-    if (this.core.global.framecount == lastFramecount) return;
-    lastFramecount = this.core.global.framecount;
-    lastTime = time;
-    time = time + (this.ModLoader.emulator.rdramRead8(0x801C6FA1) / 60.0);
-
     let tunicOffset = TUNICADDR + this.core.link.tunic * 3;
 
     var rScalar = ColorTargets[currentTarget].r == 255 ? 1 : -1;
