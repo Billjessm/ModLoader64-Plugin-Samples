@@ -1,0 +1,13 @@
+{ 
+  "name": "BanjoKazooieQuakeMovement", 
+  "version": "1.0.0", 
+  "description": "Movement straight out of Quake III!", 
+  "main": "BanjoKazooieQuakeMovement.js", 
+  "author": "Drahsid", 
+  "credits": "", 
+  "license": "MIT", 
+  "core": "BanjoKazooie", 
+  "dry": { 
+    "extends": "./ModLoader64/package-dry.json" 
+  } 
+} 

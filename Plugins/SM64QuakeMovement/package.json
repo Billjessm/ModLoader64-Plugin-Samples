@@ -1,0 +1,13 @@
+{ 
+  "name": "SM64QuakeMovement", 
+  "version": "1.0.0", 
+  "description": "Quake physics straight outta Quake III!", 
+  "main": "SM64QuakeMovement.js", 
+  "author": "Drahsid", 
+  "credits": "", 
+  "license": "MIT", 
+  "core": "SuperMario64", 
+  "dry": { 
+    "extends": "./ModLoader64/package-dry.json" 
+  } 
+} 
