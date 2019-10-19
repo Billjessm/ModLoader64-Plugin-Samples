@@ -32,8 +32,6 @@ export class RainbowTunic implements IPlugin {
   {
     let tunicOffset = TUNICADDR + this.core.link.tunic * 3;
 
-    this.ModLoader.logger.info(currentTarget.toString());
-
     var rScalar = colorTargets[currentTarget].r == 255 ? 1 : -1;
     var gScalar = colorTargets[currentTarget].g == 255 ? 1 : -1;
     var bScalar = colorTargets[currentTarget].b == 255 ? 1 : -1;
