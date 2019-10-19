@@ -2,20 +2,25 @@ import { EventsClient, EventHandler } from 'modloader64_api/EventHandler';
 import { IModLoaderAPI, IPlugin } from 'modloader64_api/IModLoaderAPI';
 import { InjectCore } from 'modloader64_api/CoreInjection';
 import { IOOTCore } from 'modloader64_api/OOT/OOTAPI';
+import { Color3 } from './Color3';
 
 const TUNICADDR = 0x000f7ad8;
 
-enum CurrentColor{
-  r,
-  g,
-  b
-}
+let ColorTargets : Color3[] = [
+  new Color3(255, 0, 0),
+  new Color3(255, 255, 0),
+  new Color3(0, 255, 0),
+  new Color3(0, 255, 255),
+  new Color3(0, 0, 255),
+  new Color3(255, 0, 255)
+];
+let currentTarget = 0;
+let currentColor = new Color3();
+let velocity = 15;
 
-let cCol = CurrentColor.r;
-let velocity = 4;
-let r = 0;
-let g = 0;
-let b = 0;
+let lastTime : number = 0;
+let time : number = 0;
+let lastFramecount = 0;
 
 export class RainbowTunic implements IPlugin {
   ModLoader = {} as IModLoaderAPI;
@@ -27,32 +32,36 @@ export class RainbowTunic implements IPlugin {
   init(): void {}
   postinit(): void {}
 
-  onTick(): void {
+  onTick(): void 
+  {
+    if (this.core.global.framecount == lastFramecount) return;
+    lastFramecount = this.core.global.framecount;
+    lastTime = time;
+    time = time + (this.ModLoader.emulator.rdramRead8(0x801C6FA1) / 60.0);
+
     let tunicOffset = TUNICADDR + this.core.link.tunic * 3;
 
-    if (cCol == CurrentColor.r){
-      r = r + velocity;
-      if (r < 0) r = 0;
-      if (r > 255) r = 255;
-      cCol = (r == 255 || r == 0) ? CurrentColor.g : cCol;
-    }
-    else if(cCol == CurrentColor.g){
-      g = g + velocity;
-      if (g < 0) g = 0;
-      if (g > 255) g = 255;
-      cCol = (g == 255 || g == 0) ? CurrentColor.b : cCol;
-    }
-    else{
-      b = b + velocity;
-      if (b < 0) b = 0;
-      if (b > 255) b = 255;
-      if (b == 255 || b == 0){
-        cCol = CurrentColor.r;
-        velocity = velocity * -1;
-      }
+    var rScalar = ColorTargets[currentTarget].r == 255 ? 1 : -1;
+    var gScalar = ColorTargets[currentTarget].g == 255 ? 1 : -1;
+    var bScalar = ColorTargets[currentTarget].b == 255 ? 1 : -1;
+
+    currentColor.r = currentColor.r + (velocity * rScalar);
+    currentColor.g = currentColor.g + (velocity * gScalar);
+    currentColor.b = currentColor.b + (velocity * bScalar);
+
+    currentColor = currentColor.clamped();
+
+    if (
+      currentColor.r == ColorTargets[currentTarget].r
+      && currentColor.g == ColorTargets[currentTarget].g
+      && currentColor.b == ColorTargets[currentTarget].b
+      ) 
+    {
+      currentTarget = currentTarget + 1; //Math.round(Math.random() * ColorTargets.length);
+      currentTarget = currentTarget > ColorTargets.length - 1 ? 0 : currentTarget;
     }
 
-    this.ModLoader.emulator.rdramWriteBuffer(tunicOffset, Buffer.from([r, g, b]));
+    this.ModLoader.emulator.rdramWriteBuffer(tunicOffset, Buffer.from([currentColor.r, currentColor.g, currentColor.b]));
   }
 
   @EventHandler(EventsClient.ON_INJECT_FINISHED)
