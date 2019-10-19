@@ -6,7 +6,7 @@ import { Color3 } from './Color3';
 
 const TUNICADDR = 0x000f7ad8;
 
-let ColorTargets : Color3[] = [
+let colorTargets : Color3[] = [
   new Color3(255, 0, 0),
   new Color3(255, 255, 0),
   new Color3(0, 255, 0),
@@ -32,9 +32,11 @@ export class RainbowTunic implements IPlugin {
   {
     let tunicOffset = TUNICADDR + this.core.link.tunic * 3;
 
-    var rScalar = ColorTargets[currentTarget].r == 255 ? 1 : -1;
-    var gScalar = ColorTargets[currentTarget].g == 255 ? 1 : -1;
-    var bScalar = ColorTargets[currentTarget].b == 255 ? 1 : -1;
+    this.ModLoader.logger.info(currentTarget.toString());
+
+    var rScalar = colorTargets[currentTarget].r == 255 ? 1 : -1;
+    var gScalar = colorTargets[currentTarget].g == 255 ? 1 : -1;
+    var bScalar = colorTargets[currentTarget].b == 255 ? 1 : -1;
 
     currentColor.r = currentColor.r + (velocity * rScalar);
     currentColor.g = currentColor.g + (velocity * gScalar);
@@ -42,15 +44,9 @@ export class RainbowTunic implements IPlugin {
 
     currentColor = currentColor.clamped();
 
-    if (
-      currentColor.r == ColorTargets[currentTarget].r
-      && currentColor.g == ColorTargets[currentTarget].g
-      && currentColor.b == ColorTargets[currentTarget].b
-      ) 
-    {
-      currentTarget = currentTarget + 1; //Math.round(Math.random() * ColorTargets.length);
-      currentTarget = currentTarget > ColorTargets.length - 1 ? 0 : currentTarget;
-    }
+    if (currentColor.r == colorTargets[currentTarget].r
+      && currentColor.g == colorTargets[currentTarget].g
+      && currentColor.b == colorTargets[currentTarget].b) currentTarget = (currentTarget + 1) % (colorTargets.length - 1);
 
     this.ModLoader.emulator.rdramWriteBuffer(tunicOffset, Buffer.from([currentColor.r, currentColor.g, currentColor.b]));
   }
