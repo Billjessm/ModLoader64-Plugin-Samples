@@ -1,0 +1,14 @@
+{
+  "name": "RainbowGauntlets",
+  "version": "1.0.0",
+  "description": "Makes gauntlets into a rainbow.",
+  "main": "RainbowGauntlets.js",
+  "author": "PapaSmurf",
+  "credits": "Drahsid",
+  "license": "MIT",
+  "core": "OcarinaofTime",
+  "updateUrl": "https://github.com/onedementedsmurf/OoTOnline-Plugins/raw/master/RainbowGauntlets/update.json",
+  "dry": {
+    "extends": "./ModLoader64/package-dry.json"
+  }
+}
