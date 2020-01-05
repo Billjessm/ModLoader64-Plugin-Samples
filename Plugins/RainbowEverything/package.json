@@ -1,0 +1,14 @@
+{
+  "name": "RainbowEverything",
+  "version": "1.0.2",
+  "description": "Makes everything into a synchronized rainbow.",
+  "main": "RainbowEverything.js",
+  "author": "PapaSmurf",
+  "credits": "Drahsid",
+  "license": "GPL",
+  "core": "OcarinaofTime",
+  "updateUrl": "https://github.com/onedementedsmurf/OoTOnline-Plugins/raw/master/RainbowEverything/update.json",
+  "dry": {
+    "extends": "./ModLoader64/package-dry.json"
+  }
+}

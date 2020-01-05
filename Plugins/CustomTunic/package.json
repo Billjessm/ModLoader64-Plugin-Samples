@@ -1,0 +1,13 @@
+{
+  "name": "CustomTunic",
+  "version": "1.0.0",
+  "description": "My custom tunic.",
+  "main": "CustomTunic.js",
+  "author": "PapaSmurf",
+  "credits": "",
+  "license": "MIT",
+  "core": "OcarinaofTime",
+  "dry": {
+    "extends": "./ModLoader64/package-dry.json"
+  }
+}
