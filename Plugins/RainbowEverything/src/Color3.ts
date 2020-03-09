@@ -13,6 +13,14 @@ export class Color3
         this.b = _b
     }
 
+    public div(rhs: number) : Color3 {
+        return new Color3(Math.floor(this.r / rhs), Math.floor(this.g / rhs), Math.floor(this.b / rhs));
+    }
+
+    public mul(rhs: number) : Color3 {
+        return new Color3(Math.floor(this.r * rhs), Math.floor(this.g * rhs), Math.floor(this.b * rhs));
+    }
+
     public toPercent() : Color3 
     {
         return new Color3(this.r / 255, this.g / 255, this.b / 255);
