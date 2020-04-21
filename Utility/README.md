@@ -10,7 +10,8 @@ MemoryWatcher.ts contains a class which allows you to specificy an address space
 ## Z64Input
 Z64Input.ts contains a class which was engineered to take a controller structure from Ocarina of Time, and can interpret input into readable button states of Up, Pressed, and Down. Furthermore, as a button is down, it has an incrementing timer that describes how long it has been pressed.
 
-## Vector3
-Vector3.ts contains a class with a 3-scalar [3D] vector and math utility with this in mind.
+~~## Vector3
+Vector3.ts contains a class with a 3-scalar [3D] vector and math utility with this in mind.~~
+Vector3 has been implemented into Modloader. The version found in this repository is deprecated.
 
 
